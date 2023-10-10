@@ -36,13 +36,39 @@ export type ImageSlots = {
 export type ImageState = ComponentState<ImageSlots> & Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
 
 // @public
+export const LazyImage: ForwardRefComponent<LazyImageProps>;
+
+// @public (undocumented)
+export const lazyImageClassNames: SlotClassNames<LazyImageSlots>;
+
+// @public
+export type LazyImageProps = ComponentProps<LazyImageSlots> & {};
+
+// @public (undocumented)
+export type LazyImageSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type LazyImageState = ComponentState<LazyImageSlots>;
+
+// @public
 export const renderImage_unstable: (state: ImageState) => JSX.Element;
+
+// @public
+export const renderLazyImage_unstable: (state: LazyImageState) => JSX.Element;
 
 // @public
 export const useImage_unstable: (props: ImageProps, ref: React_2.Ref<HTMLImageElement>) => ImageState;
 
 // @public (undocumented)
 export const useImageStyles_unstable: (state: ImageState) => void;
+
+// @public
+export const useLazyImage_unstable: (props: LazyImageProps, ref: React_2.Ref<HTMLElement>) => LazyImageState;
+
+// @public
+export const useLazyImageStyles_unstable: (state: LazyImageState) => LazyImageState;
 
 // (No @packageDocumentation comment for this package)
 

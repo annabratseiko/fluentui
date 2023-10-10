@@ -243,7 +243,10 @@ export const libraryInfo: LibraryInfo = {
         },
         {
           name: 'react-image',
-          codeItems: [{ name: 'Image', componentType: 'component' }],
+          codeItems: [
+            { name: 'Image', componentType: 'component' },
+            { name: 'LazyImage', componentType: 'component' },
+          ],
         },
         {
           name: 'react-persona',

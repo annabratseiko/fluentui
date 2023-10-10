@@ -388,8 +388,19 @@ export {
   renderImage_unstable,
   useImage_unstable,
   useImageStyles_unstable,
+  LazyImage,
+  renderLazyImage_unstable,
+  useLazyImageStyles_unstable,
+  useLazyImage_unstable,
 } from '@fluentui/react-image';
-export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
+export type {
+  ImageProps,
+  ImageSlots,
+  ImageState,
+  LazyImageProps,
+  LazyImageSlots,
+  LazyImageState,
+} from '@fluentui/react-image';
 export {
   Label,
   labelClassNames,

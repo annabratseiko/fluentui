@@ -16,11 +16,10 @@ import { getImageTypeAccordingToTheImageSize } from '../../utils/lazyImageSizeUt
 export const useLazyImage_unstable = (props: LazyImageProps, ref: React.Ref<HTMLElement>): LazyImageState => {
   const initialState = useInitialImageState(props);
 
-  const { preLoadState, placeholder } = props;
+  const { preLoadState, placeholder, isInlineImageWrapper, isImageInlineOrAttached, fixedAspectRatio } = props;
 
   const [src, setSrc] = React.useState(initialState.src);
   const [loadState, setLoadState] = React.useState(initialState.loadState);
-  const [showAnimation, setShowAnimation] = React.useState(true);
   // const [width, setWidth] = React.useState(initialState.width);
   // const [height, setHeight] = React.useState(initialState.height);
   // const dataTid = `lazy-image-${loadState}`;
@@ -99,7 +98,6 @@ export const useLazyImage_unstable = (props: LazyImageProps, ref: React.Ref<HTML
       }
       setSrc(props.image?.src);
       setLoadState(ImageLoadState.Succeed);
-      setShowAnimation(false);
     });
 
     image.onError = mergeCallbacks(image.onError, () => {
@@ -108,7 +106,6 @@ export const useLazyImage_unstable = (props: LazyImageProps, ref: React.Ref<HTML
       }
       setSrc(props.image?.src);
       setLoadState(ImageLoadState.Fail);
-      setShowAnimation(false);
     });
   }
 
@@ -117,7 +114,9 @@ export const useLazyImage_unstable = (props: LazyImageProps, ref: React.Ref<HTML
     height: initialState.height,
     maxWidth: initialState.maxHeight,
     maxHeight: initialState.maxHeight,
-    showAnimation,
+    isInlineImageWrapper,
+    isImageInlineOrAttached,
+    fixedAspectRatio,
     showImage: showImage(),
     showPlaceholder: shouldAddPlaceholder(),
     components: {
@@ -128,7 +127,7 @@ export const useLazyImage_unstable = (props: LazyImageProps, ref: React.Ref<HTML
     },
     root: slot.always(
       getNativeElementProps('div', {
-        ref, //should it be on img component
+        ref, //should it be on img component?
         ...props,
       }),
       { elementType: 'div' },

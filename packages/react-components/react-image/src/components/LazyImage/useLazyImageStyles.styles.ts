@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { LazyImageSlots, LazyImageState } from './LazyImage.types';
 
@@ -17,8 +17,35 @@ const useStyles = makeStyles({
     display: 'flex',
     position: 'relative', //if shouldAddPlaceholder
   },
+  fixedAspectRatio: {
+    alignItems: 'center',
+    height: 'auto',
+    justifyContent: 'center',
+    ...shorthands.overflow('hidden'),
+    width: '100%',
+  },
 
-  animation: {},
+  inlineImageWrapper: {
+    display: 'inline-block',
+  },
+
+  // ...(!isImageInlineOrAttached && {
+  //   maxHeight: fixedAspectRatio ? `${maxHeight}rem` : undefined,
+  //   maxWidth: `${maxWidth}rem`,
+  // }),
+
+  // should be added to the image
+  animation: {
+    // keyframe: {
+    //   from: {
+    //     opacity: 0,
+    //   },
+    //   to: {
+    //     opacity: 1,
+    //   },
+    // },
+    // timingFunction: 'cubic-bezier(0.3, 0, 0.6, 1)',
+  },
 
   image: {},
 });
@@ -28,6 +55,7 @@ const useStyles = makeStyles({
  */
 export const useLazyImageStyles_unstable = (state: LazyImageState): LazyImageState => {
   const styles = useStyles();
+
   state.root.className = mergeClasses(lazyImageClassNames.root, styles.root, state.root.className);
   if (state.animation) {
     state.animation.className = mergeClasses(lazyImageClassNames.animation, styles.animation);

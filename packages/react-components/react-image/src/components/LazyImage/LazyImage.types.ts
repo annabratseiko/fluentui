@@ -53,7 +53,9 @@ export type LazyImageProps = ComponentProps<LazyImageSlots> &
  * State used in rendering LazyImage
  */
 export type LazyImageState = ComponentState<LazyImageSlots> &
-  Required<Pick<LazyImageProps, 'width' | 'height'>> & {
+  Required<
+    Pick<LazyImageProps, 'width' | 'height' | 'isInlineImageWrapper' | 'isImageInlineOrAttached' | 'fixedAspectRatio'>
+  > & {
     showImage: boolean;
     showPlaceholder: boolean;
     showAnimation: boolean;
